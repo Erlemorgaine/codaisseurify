@@ -4,9 +4,9 @@ class SongsController < ApplicationController
   def index
   end
 
-  # def new
-  #   @song = @artist.songs.build
-  # end
+  def new
+    @song = @artist.songs.build
+  end
 
   def create
     @song = @artist.songs.create(song_params)
@@ -14,8 +14,14 @@ class SongsController < ApplicationController
     if @song.save
       redirect_to @artist
     else
-      render 'new'
+      redirect_to new_artist_song_path(@artist.id)
     end
+  end
+
+  def destroy
+    @song = Song.find(params[:id])
+    @song.destroy
+    redirect_to @artist
   end
 
   private

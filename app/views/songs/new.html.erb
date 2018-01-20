@@ -1,10 +1,12 @@
 <%= form_for [@artist, @artist.songs.new] do |f| %>
 
-  <ul>
-    <% @artist.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+  <div class="form-group">
+    <ul>
+      <% @artist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 
   <div class="form-group">
     <label>Name</label>

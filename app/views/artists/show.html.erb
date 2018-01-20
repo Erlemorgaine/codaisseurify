@@ -24,7 +24,7 @@
       <b>Songs you should listen to:</b>
       <ul>
       <% @songs.each do |song| %>
-        <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i></li>
+        <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
       <% end %>
       </ul>
 
