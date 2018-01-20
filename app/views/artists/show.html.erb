@@ -4,7 +4,7 @@
   <div class="panel-body">
 
     <% @artist.photos.each do |photo| %>
-      <%= image_tag photo.image.thumbnail %>
+      <%= image_tag photo.image.thumbnail_medium %>
     <% end %>
 
     <br/>
