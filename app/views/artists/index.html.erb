@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Awesome Artists
+      </div>
+      <div class="panel-body">
+
+        <% @artists.each do |artist| %>
+        <div class="row">
+          <div class="col-md-7">
+            <h4><%= artist.name %></h4>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <!-- <%#= link_to "Add new artist", new_artist_path, class: "btn btn-primary" %> -->
+  </div>
+</div>
