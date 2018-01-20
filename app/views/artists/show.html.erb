@@ -27,6 +27,15 @@
         <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i></li>
       <% end %>
       </ul>
+
+      <br/>
+
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
+        </div>
+      </div>
+
     </p>
 
   </div>
