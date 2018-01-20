@@ -1,3 +1,4 @@
+Photo.destroy_all
 Song.destroy_all
 Artist.destroy_all
 
@@ -18,3 +19,7 @@ song6 = Song.create!(name: "My life", year: 2014, album: "Education, Education, 
 song7 = Song.create!(name: "Change", year: 2006, album: "Acoustic Extravaganza", artist: artist3)
 song8 = Song.create!(name: "Black horse and a cherry tree", year: 2004, album: "Eye to the Telescope", artist: artist3)
 song9 = Song.create!(name: "Invisible empire", year: 2013, album: "Invisible Empire // Crescent Moon", artist: artist3)
+
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dklg9by0h/image/upload/v1516450211/codaisseurify/lianne_la_havas.jpg", artist: artist1)
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dklg9by0h/image/upload/v1516450212/codaisseurify/kaiser_chiefs.jpg", artist: artist2)
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dklg9by0h/image/upload/v1516450211/codaisseurify/kt_tunstall.jpg", artist: artist3)

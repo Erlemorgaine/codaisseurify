@@ -55,3 +55,5 @@ gem 'bootstrap-sass'
 
 # Use jQuery for easier javascript
 gem 'jquery-rails'
+
+gem 'cloudinary', '1.2.3'

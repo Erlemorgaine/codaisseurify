@@ -3,13 +3,18 @@
 
   <div class="panel-body">
 
-    <p><%= @artist.is_band == true ? "Founded in" : "Date of birth" %>: <%= @artist.birth_date %></p>
-    <p>Origin: <%= @artist.origin %></p>
-    <p>Genre: <%= @artist.genre %></p>
+    <% @artist.photos.each do |photo| %>
+      <%= image_tag photo.image %>
+    <% end %>
 
+    <br/>
+    <br/>
+
+    <p><b><%= @artist.is_band == true ? "Founded in" : "Date of birth" %></b>: <%= @artist.birth_date %></p>
+    <p><b>Origin</b>: <%= @artist.origin %></p>
+    <p><b>Genre</b>: <%= @artist.genre %></p>
 
     <!-- About -->
-    <br/>
     <br/>
     <p><%= @artist.description %></p>
 
