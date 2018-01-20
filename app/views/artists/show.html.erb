@@ -11,29 +11,29 @@
     <br/>
 
     <!-- About -->
-    <p><b><%= @artist.is_band == true ? "Founded in" : "Date of birth" %></b>: <%= @artist.birth_date %></p>
+    <p><b><%= @artist.is_band == true ? "Founded in" : "Date of birth" %></b>:
+    <%= @artist.is_band == true ? @artist.birth_date.strftime("%Y") : @artist.birth_date.strftime("%d %B %Y") %></p>
     <p><b>Origin</b>: <%= @artist.origin %></p>
     <p><b>Genre</b>: <%= @artist.genre %></p>
-
     <br/>
 
     <p><%= @artist.description %></p>
-
-    <!--  Songs -->
-    <p>
-      <b>Songs you should listen to:</b>
-      <ul>
-      <% @songs.each do |song| %>
-        <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
-      <% end %>
-      </ul>
-    </p>
-
     <br/>
 
-    <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
+    <!--  Songs -->
+    <div class="panel panel-primary">
+      <div class="panel-body">
+      <b>Songs you should listen to:</b>
+      <br/><br/>
+        <ul>
+        <% @songs.each do |song| %>
+          <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
+        <% end %>
+        </ul>
 
-    <br/><br/>
+        <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
+      </div>
+    </div>
 
     <%= link_to "Delete this artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
 

@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <label>Year</label>
-    <%= f.number_field :year, placeholder: "Year", class: "form-control" %>
+    <%= f.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year), class: "form-control" %>
   </div>
 
   <!-- <div class="form-group">
