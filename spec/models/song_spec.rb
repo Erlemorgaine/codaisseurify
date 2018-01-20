@@ -6,4 +6,15 @@ RSpec.describe Song, type: :model do
     it { is_expected.to validate_presence_of(:year) }
     it { is_expected.to validate_presence_of(:album) }
   end
+
+  describe "association with artist" do
+    let(:artist) { create :artist }
+
+    it "belongs to an artist" do
+      song = artist.songs.build(name: "Hello")
+
+      expect(song.artist).to eq(artist)
+    end
+  end
+
 end
