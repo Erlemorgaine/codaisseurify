@@ -10,14 +10,24 @@
     <br/>
     <br/>
 
+    <!-- About -->
     <p><b><%= @artist.is_band == true ? "Founded in" : "Date of birth" %></b>: <%= @artist.birth_date %></p>
     <p><b>Origin</b>: <%= @artist.origin %></p>
     <p><b>Genre</b>: <%= @artist.genre %></p>
 
-    <!-- About -->
     <br/>
+
     <p><%= @artist.description %></p>
 
+    <!--  Songs -->
+    <p>
+      <b>Songs you should listen to:</b>
+      <ul>
+      <% @songs.each do |song| %>
+        <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i></li>
+      <% end %>
+      </ul>
+    </p>
 
   </div>
 
