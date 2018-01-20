@@ -18,6 +18,10 @@ Bundler.require(*Rails.groups)
 
 module Codaisseurify
   class Application < Rails::Application
+
+    console do
+      ActiveRecord::Base.connection
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
