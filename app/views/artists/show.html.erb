@@ -27,16 +27,15 @@
         <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
       <% end %>
       </ul>
-
-      <br/>
-
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
-        </div>
-      </div>
-
     </p>
+
+    <br/>
+
+    <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
+
+    <br/><br/>
+
+    <%= link_to "Delete this artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
 
   </div>
 
