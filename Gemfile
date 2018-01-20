@@ -49,3 +49,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave', '0.11.2'
+
+# Use Bootstrap for styling
+gem 'bootstrap-sass'
+
+# Use jQuery for easier javascript
+gem 'jquery-rails'
