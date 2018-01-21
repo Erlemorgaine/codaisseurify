@@ -12,6 +12,7 @@ RSpec.describe Artist, type: :model do
 
   describe "association with song" do
     let!(:artist) { create :artist }
+    let!(:song) { create :song, artist: artist }
 
     it "has many songs" do
         song1 = artist.songs.new
@@ -22,13 +23,7 @@ RSpec.describe Artist, type: :model do
     end
 
     it "deletes associated songs" do
-      song1 = artist.songs.new
-      song2 = artist.songs.new
-
-      artist.destroy
-
-      expect(Song.all).not_to include(song1)
-      expect(Song.all).not_to include(song2)
+      expect { artist.destroy }.to change(Song, :count).by(-1)
    end
   end
 
