@@ -15,11 +15,11 @@ RSpec.describe Artist, type: :model do
     let!(:song) { create :song, artist: artist }
 
     it "has many songs" do
-        song1 = artist.songs.new
-        song2 = artist.songs.new
+      song1 = artist.songs.new
+      song2 = artist.songs.new
 
-        expect(artist.songs).to include(song1)
-        expect(artist.songs).to include(song2)
+      expect(artist.songs).to include(song1)
+      expect(artist.songs).to include(song2)
     end
 
     it "deletes associated songs" do
@@ -29,23 +29,18 @@ RSpec.describe Artist, type: :model do
 
   describe "association with photo" do
     let!(:artist) { create :artist }
+    let!(:photo) { create :photo, artist: artist }
 
     it "has many photos" do
-        photo1 = artist.photos.new
-        photo2 = artist.photos.new
-
-        expect(artist.photos).to include(photo1)
-        expect(artist.photos).to include(photo2)
-    end
-
-    it "deletes associated photos" do
       photo1 = artist.photos.new
       photo2 = artist.photos.new
 
-      artist.destroy
+      expect(artist.photos).to include(photo1)
+      expect(artist.photos).to include(photo2)
+    end
 
-      expect(Photo.all).not_to include(photo1)
-      expect(Photo.all).not_to include(photo2)
+    it "deletes associated photos" do
+      expect { artist.destroy }.to change(Photo, :count).by(-1)
    end
   end
 
