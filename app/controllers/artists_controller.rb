@@ -2,7 +2,13 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show]
 
   def index
-    @artists = Artist.all
+    if params[:order] == 'name'
+      @artists = Artist.all.order_by_name_asc
+    elsif params[:order] == 'created_at'
+      @artists = Artist.all.order('created_at')
+    else
+      @artists = Artist.all
+    end
   end
 
   def show
