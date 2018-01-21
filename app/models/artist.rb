@@ -9,9 +9,4 @@ class Artist < ApplicationRecord
   validates :genre, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 500 }
 
-  # scope :order_by_name_asc, -> { order(name: :asc) }
-  # scope :order_by_name_desc, -> { order(name: :desc) }
-  # scope :order_by_created_at_asc, -> { order(created_at: :asc) }
-  # scope :order_by_created_at_desc, -> { order(created_at: :desc) }
-
 end
