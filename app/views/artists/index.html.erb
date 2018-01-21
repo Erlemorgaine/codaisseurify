@@ -20,7 +20,14 @@
       </div>
     </div>
 
-    <%= link_to "Order by name", artists_path(order: 'name'), class: "btn btn-primary" %>
-    <%= link_to "Order by date created", artists_path(order: 'created_at'), class: "btn btn-primary" %>
+    <!-- <%#= link_to "Order by name", artists_path(order: 'name'), class: "btn btn-primary" %> -->
+    <!-- <%#= link_to "Order by date created", artists_path(order: 'created_at'), class: "btn btn-primary" %> -->
+    <div>
+      <%= sortable 'name', "Order by name" %>
+    </div>
+    <div>
+      <%= sortable 'created_at', "Order by date created" %>
+    </div>
+
   </div>
 </div>
