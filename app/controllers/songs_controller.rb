@@ -11,7 +11,7 @@ class SongsController < ApplicationController
     if @song.save
       redirect_to @artist
     else
-      redirect_to new_artist_song_path(@artist.id)
+      render 'new'
     end
   end
 
