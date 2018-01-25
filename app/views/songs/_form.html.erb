@@ -12,14 +12,9 @@
   </div>
 
   <div class="form-group">
-    <label>Year</label>
-    <%= f.number_field :name, placeholder: "Name", class: "form-control" %>
+    <label>Release year</label>
+    <%= f.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year), class: "form-control" %>
   </div>
-
-  <!-- <div class="form-group">
-    <label>Year</label>
-    <%#= f.select_year() :year id: "year", prompt: "Select year", class: "form-control" %>
-  </div> -->
 
   <div class="form-group">
     <label>Album</label>

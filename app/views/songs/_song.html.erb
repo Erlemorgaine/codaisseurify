@@ -1,0 +1,7 @@
+<ul class="song-list">
+<% @songs.each do |song| %>
+  <li class="song" id="song-<%= song.id %>">
+    <label for="song-<%= song.id %>"><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i></label>
+    <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
+<% end %>
+</ul>
