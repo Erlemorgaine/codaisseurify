@@ -75,3 +75,5 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+
+gem 'active_model_serializers', '~> 0.10.0'

@@ -1,12 +1,17 @@
 class Api::SongsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :load_artist
+  before_action :set_artist
+
+  def new
+    song = @artist.songs.build
+  end
 
   def create
-    song = artist.songs.create(song_params)
+    song = @artist.songs.create(song_params)
 
     if song.save
       render status: 201, json: {
+        artist: @artist,
         song: song
       }.to_json
     else
@@ -28,14 +33,11 @@ class Api::SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :year, :album, :artist_id)
+    params.require(:song).permit(:name, :year, :album)
   end
 
-  def load_artist
-    artist = Artist.find(params[:artist_id])
-    render status: 200, json: {
-      artist: artist
-    }.to_json
+  def set_artist
+    @artist = Artist.find(params[:artist_id])
   end
 
 end
