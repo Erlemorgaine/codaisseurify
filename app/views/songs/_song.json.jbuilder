@@ -1,4 +1,2 @@
-json.array!(@songs) do |song|
-  json.extract! artist, :id, :name, :year, :album
-  json.url artist_url(artist, format: :json)
-end
+json.extract! @song, :id, :name, :year, :album, :created_at, :updated_at
+json.url todo_url(@song, format: :json)
