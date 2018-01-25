@@ -62,13 +62,16 @@ gem 'cloudinary', '1.2.3'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'capybara', '~> 2.9', '>= 2.9.1'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'selenium-webdriver'
+  gem "chromedriver-helper"
 end
 
 group :test do
-  gem 'capybara', '~> 2.9', '>= 2.9.1'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'database_cleaner'
 end
 
 gem 'rails_12factor', group: :production

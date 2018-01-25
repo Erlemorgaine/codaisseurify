@@ -26,11 +26,8 @@
         <div class="panel-body">
         <b>Songs you should listen to:</b>
         <br/><br/>
-          <ul>
-          <% @songs.each do |song| %>
-            <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
-          <% end %>
-          </ul>
+
+          <%= render 'songs/song'%>
 
           <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
         </div>
