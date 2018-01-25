@@ -28,7 +28,7 @@
         <br/><br/>
           <ul>
           <% @songs.each do |song| %>
-            <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", [@artist, song], method: :delete, data: { confirm: "Are you sure?" } %></li>
+            <li><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> <%= link_to "[Delete]", artist_song_path(song.id), method: :delete, data: { confirm: "Are you sure?" } %></li>
           <% end %>
           </ul>
 
