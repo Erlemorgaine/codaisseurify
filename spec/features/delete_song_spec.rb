@@ -2,21 +2,15 @@ require 'rails_helper'
 
 feature 'Delete song', js: true do
   let!(:artist) { create :artist }
-  let!(:song) { create :song, artist: artist }
+  let!(:song) { create :song, id: 20, name: 'Habanera', artist: artist }
 
   scenario 'delete song' do
-    # Point your browser towards the todo path
-    visit artist_song_path(artist)
+    visit artist_path(artist)
 
-    # Enter description in the text field
-    click_link '',
+    # click_link 'delete-song-<%= song.id%>'
 
-    # Press enter (to submit the form)
-    page.execute_script("$('form').submit()")
+    find(:xpath, "//label[contains(text(),'Habanera')]/following-sibling::a").click
 
-    # Expect the new task to be displayed in the list of tasks
-    expect(page).to have_content('Be Batman')
-    expect(page).to have_content('1919')
-    expect(page).to have_content('Batman')
+    expect(page).to have_css("li", :count => 0)
   end
 end
