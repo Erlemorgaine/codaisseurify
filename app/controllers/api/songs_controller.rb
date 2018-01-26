@@ -14,6 +14,7 @@ class Api::SongsController < ApplicationController
         artist: @artist,
         song: song
       }.to_json
+      format.html { redirect_to @artist, notice: 'Song was successfully created.' }
     else
       render status: 422, json: {
         errors: song.errors

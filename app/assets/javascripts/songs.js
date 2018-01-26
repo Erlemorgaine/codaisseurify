@@ -1,10 +1,12 @@
+require jquery
+
 function createSong(name, year, album) {
 
   var newSong = { name: name, year: year, album: album };
 
   $.ajax({
     type: "POST",
-    url: "/api/artists/songs",
+    url: "/api/artists/" + //artistid in variable + "/songs",
     data: JSON.stringify({
         song: newSong
     }),
@@ -37,18 +39,18 @@ function submitSong(event) {
   $("#song_title").val(null);
 }
 
-// function deleteSong(event) {
-//   event.preventDefault();
-//   $("#song-<%= song.id %>").remove();
-// }
-//
-// function deleteAllSongs(event) {
-//   event.preventDefault();
-//   $(".song").remove();
-// }
+function deleteSong(event) {
+  event.preventDefault();
+  $("#song-<%= song.id %>").remove();
+}
+
+function deleteAllSongs(event) {
+  event.preventDefault();
+  $(".song").remove();
+}
 
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
-  // $("#delete-song").bind('click', deleteSong);
-  // $("#delete-songs").bind('click', deleteAllSongs);
+  $("#delete-song").bind('click', deleteSong);
+  $("#delete-songs").bind('click', deleteAllSongs);
 });

@@ -29,7 +29,14 @@
 
           <%= render 'songs/song'%>
 
-          <%= link_to "Add your favorite song from this artist", new_artist_song_path(@artist.id) %>
+        </div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <b>Add your favorite song:</b>
+          <br/><br/>
+          <%= render 'songs/form' %>
         </div>
       </div>
 
