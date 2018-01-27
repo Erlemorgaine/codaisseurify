@@ -1,5 +1,5 @@
 class PhotoSerializer < ActiveModel::Serializer
-  attributes :image
+  attributes :id, :image
 
   belongs_to :artist
 end
