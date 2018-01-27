@@ -27,7 +27,7 @@ function createSong(name, year, album) {
 
     var label = $('<label></label>');
     label.attr('for', songId);
-    label.html(name + " ("+ year +"), from the album "+ album + " ");
+    label.html(`${name} (${year}), from the album ${album}`);
 
     var deleteButton = $('<input type="button" value="Delete" onclick="deleteSong()" id="delete-song">')
 
