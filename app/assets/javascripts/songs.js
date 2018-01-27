@@ -23,7 +23,7 @@ function createSong(name, year, album) {
   .done(function(data) {
     console.log(data);
 
-    var songId = "song-" + nextSongId();
+    var songId = data.id;
 
     var label = $('<label></label>');
     label.attr('for', songId);
@@ -53,9 +53,17 @@ function submitSong(event) {
 }
 
 function deleteSong(event) {
-  event.preventDefault();
-  var button = this;
-  $(button).parent().remove();
+  $.ajax({
+    type: "DELETE",
+    url: "/songs/" + songId,
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data) {
+    $('a[id="delete-song"]').remove();
+  // event.preventDefault();
+  // var button = this;
+  // $(button).parent().remove();
 }
 
 function deleteAllSongs(event) {
