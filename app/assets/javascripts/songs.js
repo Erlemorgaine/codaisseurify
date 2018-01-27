@@ -54,8 +54,8 @@ function submitSong(event) {
 
 function deleteSong(event) {
   event.preventDefault();
-  var button = this;
-  $(button).parent().remove();
+  var link = this;
+  $(link).parent().remove();
 }
 
 function deleteAllSongs(event) {
@@ -65,6 +65,6 @@ function deleteAllSongs(event) {
 
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
-  $("input[type=button]").bind('click', deleteSong);
+  $("#delete-song").bind('click', deleteSong);
   $("#delete-songs").bind('click', deleteAllSongs);
 });

@@ -1,12 +1,8 @@
 <ul class="song-list">
 <% @songs.each do |song| %>
-<<<<<<< HEAD
   <li class="song-item" id="song-<%= song.id %>">
-=======
-  <li class="song" id="song-<%= song.id %>">
->>>>>>> 11d63831e7844b754c301125e35533ddc7663a34
     <label for="song-<%= song.id %>"><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> </label>
-    <a href="#" id="delete-song"><%= link_to "[Delete]", [@artist, song], method: :delete %></a>
+    <a href="#" id="delete-song" class="button"><%= link_to "[Delete]", [@artist, song], method: :delete %></a>
   </li>
 <% end %>
 </ul>

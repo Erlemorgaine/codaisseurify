@@ -11,11 +11,7 @@ class SongsController < ApplicationController
     if @song.save
       redirect_to @artist
     else
-<<<<<<< HEAD
       redirect_to @artist
-=======
-      render 'new'
->>>>>>> 11d63831e7844b754c301125e35533ddc7663a34
     end
   end
 

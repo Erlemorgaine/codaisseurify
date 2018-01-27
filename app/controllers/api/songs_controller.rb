@@ -11,7 +11,6 @@ class Api::SongsController < ApplicationController
 
     if song.save
       render status: 201, json: {
-<<<<<<< HEAD
         message: "Song successfully created",
         artist: @artist,
         song: song
@@ -19,14 +18,6 @@ class Api::SongsController < ApplicationController
     else
       render status: 422, json: {
         message: "Song could not be created",
-=======
-        artist: @artist,
-        song: song
-      }.to_json
-      format.html { redirect_to @artist, notice: 'Song was successfully created.' }
-    else
-      render status: 422, json: {
->>>>>>> 11d63831e7844b754c301125e35533ddc7663a34
         errors: song.errors
       }.to_json
     end
