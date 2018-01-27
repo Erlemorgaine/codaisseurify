@@ -1,0 +1,52 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= @artist.name %></div>
+
+    <div class="panel-body">
+
+      <% @artist.photos.each do |photo| %>
+        <%= image_tag photo.image.thumbnail_medium %>
+      <% end %>
+
+      <br/>
+      <br/>
+
+      <!-- About -->
+      <p><b><%= @artist.is_band == true ? "Founded in" : "Date of birth" %></b>:
+      <%= @artist.is_band == true ? @artist.birth_date.strftime("%Y") : @artist.birth_date.strftime("%d %B %Y") %></p>
+      <p><b>Origin</b>: <%= @artist.origin %></p>
+      <p><b>Genre</b>: <%= @artist.genre %></p>
+      <br/>
+
+      <p><%= @artist.description %></p>
+      <br/>
+
+      <!--  Songs -->
+      <div class="panel panel-primary">
+        <div class="panel-body">
+        <b>Songs you should listen to:</b>
+        <br/><br/>
+
+          <%= render 'songs/song'%>
+
+        </div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <b>Add your favorite song:</b>
+          <br/><br/>
+          <%= render 'songs/form' %>
+        </div>
+      </div>
+
+      <%= link_to "Delete this artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+
+    </div>
+
+  </div>
+
+  <div class="panel-body">
+    <%= link_to "Back", artists_path, class: "btn btn-default" %>
+  </div>
+</div>

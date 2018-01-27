@@ -1,0 +1,32 @@
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4>Awesome Artists</h4>
+    </div>
+    <div class="panel-body">
+
+      <% @artists.each do |artist| %>
+       <div class="row">
+        <div class="col-md-7">
+          <%= image_tag artist.photos[0].image.thumbnail_small %>
+          <h5><%= link_to artist.name, artist_path(artist.id) %></h5>
+          <br>
+        </div>
+      </div>
+      <% end %>
+      <br/>
+
+    </div>
+
+    <div class="order-buttons">
+      <span class="order-button">
+        <%= sortable 'name', "Order by name" %>
+      </span>
+      <span class="order-button">
+        <%= sortable 'created_at', "Order by date created" %>
+      </span>
+    </div>
+  </div>
+
+</div>
