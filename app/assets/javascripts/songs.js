@@ -27,7 +27,7 @@ function createSong(name, year, album) {
 
     var label = $('<label></label>');
     label.attr('for', songId);
-    label.html(`${name} (${year}), from the album ${album}`);
+    label.html(`${name} (${year}), from the album ${album} `);
 
     var deleteButton = $('<input type="button" value="Delete" id="delete-song">')
 
@@ -74,7 +74,11 @@ function deleteSong() {
 
 function deleteAllSongs(event) {
   event.preventDefault();
-  $(".song-item").remove();
+
+  $.each($(".song-item"), function(index, listItem) {
+    songId = $(listItem).data('song-id');
+    deleteSong(songId);
+  });
 }
 
 // function deleteAllSongs(event) {
