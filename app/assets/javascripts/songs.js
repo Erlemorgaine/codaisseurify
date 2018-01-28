@@ -17,25 +17,26 @@ function createSong(name, year, album) {
     contentType: "application/json",
     dataType: "json"
   })
-  .fail(function(error) {
-    console.log(error);
-  })
   .done(function(data) {
     console.log(data);
 
     var songId = nextSongId();
+    //let songId = data.id;
 
     var label = $('<label></label>');
     label.attr('for', songId);
     label.html(`${name} (${year}), from the album ${album}`);
 
-    var deleteButton = $('<input type="button" value="Delete song" id="delete-song">')
+    var deleteButton = $('<input type="button" value="Delete song" id="delete-song-'+songId+'">')
 
     var listItem = $('<li class="song-item"></li>');
     listItem.attr('song-id', songId);
     listItem.append(label).append(deleteButton);
 
     $(".song-list").append( listItem );
+  })
+  .fail(function(error) {
+    console.log(error);
   })
 }
 
