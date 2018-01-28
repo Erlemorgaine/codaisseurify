@@ -1,16 +1,17 @@
-require jquery
-
 function nextSongId() {
   return $(".song-item").length + 1;
 };
 
 function createSong(name, year, album) {
 
+  let artistId = $('div[hidden]').attr('id');
+
   var newSong = { name: name, year: year, album: album };
 
   $.ajax({
     type: "POST",
-    url: "/api/artists/1/songs" //+ artistid in variable + "/songs",
+    //url: "/api/artists/" + artistId + "/songs",
+    url: "/api/artists/1/songs",
     data: JSON.stringify({
         song: newSong
     }),
