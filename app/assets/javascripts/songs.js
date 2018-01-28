@@ -10,8 +10,7 @@ function createSong(name, year, album) {
 
   $.ajax({
     type: "POST",
-    //url: "/api/artists/" + artistId + "/songs",
-    url: "/api/artists/1/songs",
+    url: "/api/artists/" + artistId + "/songs",
     data: JSON.stringify({
         song: newSong
     }),
@@ -24,7 +23,7 @@ function createSong(name, year, album) {
   .done(function(data) {
     console.log(data);
 
-    var songId = "song-" + nextSongId();
+    var songId = nextSongId();
 
     var label = $('<label></label>');
     label.attr('for', songId);
@@ -33,7 +32,7 @@ function createSong(name, year, album) {
     var deleteButton = $('<input type="button" value="Delete" onclick="deleteSong()" id="delete-song">')
 
     var listItem = $('<li class="song-item"></li>');
-    listItem.attr('id', songId);
+    listItem.attr('song-id', songId);
     listItem.append(label).append(deleteButton);
 
     $(".song-list").append( listItem );
@@ -54,9 +53,17 @@ function submitSong(event) {
 }
 
 function deleteSong(event) {
-  event.preventDefault();
-  var link = this;
-  $(link).parent().remove();
+  $.ajax({
+    type: "DELETE",
+    url: "/api/artists/" + artistId + "/songs/" + songId,
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data) {
+    event.preventDefault();
+    var button = this;
+    $(link).parent().remove();
+  });
 }
 
 function deleteAllSongs(event) {
@@ -66,6 +73,6 @@ function deleteAllSongs(event) {
 
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
-  $("#delete-song").bind('click', deleteSong);
+  $("input[type=button]").bind('click', deleteSong);
   $("#delete-songs").bind('click', deleteAllSongs);
 });
