@@ -3,7 +3,7 @@
   <li class="song-item" song-id="<%= song.id %>">
     <label for="song-<%= song.id %>"><%= song.name %> (<%= song.year %>), from the album <i><%= song.album %></i> </label>
     <!-- <a href="#" id="delete-song-<%= song.id %>"><%#= link_to "[Delete]", [@artist, song], method: :delete %></a> -->
-    <input type="button" value="Delete" onclick="deleteSong()" id="delete-song">
+    <input type="button" value="Delete" id="delete-song">
   </li>
 <% end %>
 </ul>

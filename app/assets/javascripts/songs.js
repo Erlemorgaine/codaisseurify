@@ -29,7 +29,7 @@ function createSong(name, year, album) {
     label.attr('for', songId);
     label.html(`${name} (${year}), from the album ${album}`);
 
-    var deleteButton = $('<input type="button" value="Delete" onclick="deleteSong()" id="delete-song">')
+    var deleteButton = $('<input type="button" value="Delete" id="delete-song">')
 
     var listItem = $('<li class="song-item"></li>');
     listItem.attr('song-id', songId);
@@ -52,7 +52,12 @@ function submitSong(event) {
   $("#song_album").val(null);
 }
 
-function deleteSong(event) {
+function deleteSong() {
+  let artistId = $('div[hidden]').attr('id');
+  var button = this;
+  var listItem = $(this).parent();
+  let songId = listItem.attr('song-id');
+
   $.ajax({
     type: "DELETE",
     url: "/api/artists/" + artistId + "/songs/" + songId,
@@ -60,9 +65,10 @@ function deleteSong(event) {
     dataType: "json"
   })
   .done(function(data) {
+    console.log(data);
+
     event.preventDefault();
-    var button = this;
-    $(link).parent().remove();
+    $('li[song-id="'+ songId +'"]').remove();
   });
 }
 
@@ -70,6 +76,11 @@ function deleteAllSongs(event) {
   event.preventDefault();
   $(".song-item").remove();
 }
+
+// function deleteAllSongs(event) {
+//   event.preventDefault();
+//   $(".song-item").remove();
+// }
 
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
