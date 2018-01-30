@@ -1,7 +1,3 @@
-function nextSongId() {
-  return $(".song-item").length + 1;
-};
-
 function createSong(name, year, album) {
 
   let artistId = $('div[hidden]').attr('id');
@@ -20,14 +16,14 @@ function createSong(name, year, album) {
   .done(function(data) {
     console.log(data);
 
-    var songId = nextSongId();
-    //let songId = data.id;
+    var songId = data.song.id;
 
     var label = $('<label></label>');
     label.attr('for', songId);
     label.html(`${name} (${year}), from the album ${album}`);
 
-    var deleteButton = $('<input type="button" value="Delete song" id="delete-song-'+songId+'">')
+    var deleteButton = $('<input type="button" value="Delete song" class="delete-song">')
+    deleteButton.bind('click', deleteSingleSong);
 
     var listItem = $('<li class="song-item"></li>');
     listItem.attr('song-id', songId);
@@ -99,7 +95,7 @@ function deleteSingleSong() {
 }
 
 $(document).ready(function() {
+  $(".delete-song").bind('click', deleteSingleSong);
   $("form").bind('submit', submitSong);
-  $("input[type=button]").bind('click', deleteSingleSong);
   $("#delete-songs").bind('click', deleteAllSongs);
 });
